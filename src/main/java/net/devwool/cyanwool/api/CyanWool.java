@@ -2,12 +2,17 @@ package net.devwool.cyanwool.api;
 
 import java.util.List;
 
+import net.devwool.cyanwool.api.command.CommandManager;
+import net.devwool.cyanwool.api.command.ConsoleCommandSender;
 import net.devwool.cyanwool.api.entity.EntityManager;
 import net.devwool.cyanwool.api.lang.LanguageManager;
 import net.devwool.cyanwool.api.management.OperatorsManager;
 import net.devwool.cyanwool.api.management.PlayerManager;
 import net.devwool.cyanwool.api.management.WhitelistManager;
 import net.devwool.cyanwool.api.network.NetworkServer;
+import net.devwool.cyanwool.api.packs.ServerPack;
+import net.devwool.cyanwool.api.plugins.PluginManager;
+import net.devwool.cyanwool.api.utils.Registry;
 
 import org.apache.logging.log4j.Logger;
 
@@ -152,5 +157,44 @@ public class CyanWool {
      */
     public static List<String> getDevelopers() {
         return getServer().getDevelopers();
+    }
+
+    /**
+     * Регистратор блоков и предметов
+     */
+    public static Registry getRegistry() {
+        return getServer().getRegistry();
+    }
+
+    /**
+     * Менеджер для регистрации плагинов
+     */
+    public static PluginManager getPluginManager() {
+        return getServer().getPluginManager();
+    }
+
+    /**
+     * Менеджер для регистрации/удаления команд
+     * 
+     * @return
+     */
+    public CommandManager getCommandManager() {
+        return getServer().getCommandManager();
+    }
+
+    /**
+     * Консоль
+     * 
+     * @return
+     */
+    public ConsoleCommandSender getConsoleCommandSender() {
+        return getServer().getConsoleCommandSender();
+    }
+
+    /**
+     * 
+     */
+    public ServerPack getServerPack() {
+        return getServer().getServerPack();
     }
 }

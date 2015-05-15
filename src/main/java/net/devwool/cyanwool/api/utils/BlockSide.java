@@ -24,19 +24,19 @@ public enum BlockSide {
      * @return the direction the entity is facing as CW 0 (west) to 3 (south)
      */
     public static int getLookDirection(final EntityLivingBase entity) {
-        return Math.floor(((entity.rotationYaw + 360.0F - 45.0F + 180.0F)) / 90.0) & 3; // Minecraft
-                                                                                        // is
-                                                                                        // -180°
-                                                                                        // (north)
-                                                                                        // to
-                                                                                        // 180°
-                                                                                        // CW,
-                                                                                        // +360
-                                                                                        // to
-                                                                                        // replace
-                                                                                        // modulo
-                                                                                        // with
-                                                                                        // &
+        return (int) Math.floor(((entity.getRotationYaw() + 360.0F - 45.0F + 180.0F)) / 90.0) & 3; // Minecraft
+        // is
+        // -180°
+        // (north)
+        // to
+        // 180°
+        // CW,
+        // +360
+        // to
+        // replace
+        // modulo
+        // with
+        // &
     }
 
     /**
@@ -49,19 +49,19 @@ public enum BlockSide {
      *         (south)
      */
     public static int getDirectionFacing(final EntityLivingBase entity) {
-        return Math.floor(((entity.rotationYaw + 360.0F - 45.0F + 180.0F)) / 90.0) & 3; // Minecraft
-                                                                                        // is
-                                                                                        // -180°
-                                                                                        // (north)
-                                                                                        // to
-                                                                                        // 180°
-                                                                                        // CW,
-                                                                                        // +360
-                                                                                        // to
-                                                                                        // replace
-                                                                                        // modulo
-                                                                                        // with
-                                                                                        // &
+        return (int) Math.floor(((entity.getRotationYaw() + 360.0F - 45.0F + 180.0F)) / 90.0) & 3; // Minecraft
+        // is
+        // -180°
+        // (north)
+        // to
+        // 180°
+        // CW,
+        // +360
+        // to
+        // replace
+        // modulo
+        // with
+        // &
     }
 
     /**

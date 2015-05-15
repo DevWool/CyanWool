@@ -14,13 +14,13 @@ public interface ItemType {
 
     public int getId();
 
+    public int getData();
+
+    public void setData(int metadata);
+
     public void setMaxStackSize(int max);
 
     public int getMaxStackSize();
-
-    public int getMetadata();
-
-    public void setMetadata(int metadata);
 
     public int getMaxDurability();
 
@@ -40,17 +40,21 @@ public interface ItemType {
 
     public Action getItemUseAction(ItemStack item);
 
-    public int getMaxItemUseDuration(ItemStack stack);
+    public int getMaxItemUseDuration(ItemStack itemStack);
 
     // Locale
-    public void setUnlocalizedName(String unlocalizedName);
+    // public void setUnlocalizedName(String unlocalizedName);
 
-    public String getUnlocalizedName();
+    // public void getLocaleDisplayName();
+
+    // public String getUnlocalizedName(); - what ?
 
     // Events
     public boolean onItemUse(ItemStack stack, Player player, World world, Position pos, BlockSide side);
 
     public boolean onItemRightClick(ItemStack itemStackIn, World worldIn, Player playerIn);
+
+    public boolean onItemLeftClick(ItemStack itemStackIn, World worldIn, Player playerIn);
 
     public boolean onItemUseFinish(ItemStack stack, World worldIn, Player playerIn);
 
@@ -61,7 +65,5 @@ public interface ItemType {
     public void onCreatedItem(ItemStack stack, World worldIn, Player playerIn);
 
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, Player playerIn, int timeLeft);
-
-    public void getLocaleDisplayName();
 
 }

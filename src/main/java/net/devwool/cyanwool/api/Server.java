@@ -2,12 +2,17 @@ package net.devwool.cyanwool.api;
 
 import java.util.List;
 
+import net.devwool.cyanwool.api.command.CommandManager;
+import net.devwool.cyanwool.api.command.ConsoleCommandSender;
 import net.devwool.cyanwool.api.entity.EntityManager;
 import net.devwool.cyanwool.api.lang.LanguageManager;
 import net.devwool.cyanwool.api.management.OperatorsManager;
 import net.devwool.cyanwool.api.management.PlayerManager;
 import net.devwool.cyanwool.api.management.WhitelistManager;
 import net.devwool.cyanwool.api.network.NetworkServer;
+import net.devwool.cyanwool.api.packs.ServerPack;
+import net.devwool.cyanwool.api.plugins.PluginManager;
+import net.devwool.cyanwool.api.utils.Registry;
 
 import org.apache.logging.log4j.Logger;
 
@@ -26,6 +31,11 @@ public interface Server {
      * @return Версия
      */
     public String getMCVersion();
+
+    /**
+     * Запуск сервера
+     */
+    public void start();
 
     /**
      * Отправить сообщение в глобальный чат (В том числе сервер).
@@ -98,4 +108,32 @@ public interface Server {
      */
     public List<String> getDevelopers();
 
+    /**
+     * Регистратор блоков и предметов
+     */
+    public Registry getRegistry();
+
+    /**
+     * Менеджер для регистрации плагинов
+     */
+    public PluginManager getPluginManager();
+
+    /**
+     * Менеджер для регистрации/удаления команд
+     * 
+     * @return
+     */
+    public CommandManager getCommandManager();
+
+    /**
+     * Консоль
+     * 
+     * @return
+     */
+    public ConsoleCommandSender getConsoleCommandSender();
+
+    /**
+     * 
+     */
+    public ServerPack getServerPack();
 }

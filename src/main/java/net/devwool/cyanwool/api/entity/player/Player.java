@@ -3,6 +3,7 @@ package net.devwool.cyanwool.api.entity.player;
 import java.util.List;
 
 import net.devwool.cyanwool.api.command.ICommandSender;
+import net.devwool.cyanwool.api.entity.meta.ClientSettings;
 import net.devwool.cyanwool.api.management.PlayerData;
 import net.devwool.cyanwool.api.network.PlayerNetwork;
 import net.devwool.cyanwool.api.world.Position;
@@ -19,6 +20,8 @@ public interface Player extends Human, ICommandSender {
     public void kickPlayer(String message);
 
     public PlayerData getPlayerData();
+
+    public ClientSettings getClientSettings();
 
     public boolean isOp();
 

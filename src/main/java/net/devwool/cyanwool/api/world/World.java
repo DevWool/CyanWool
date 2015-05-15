@@ -11,4 +11,6 @@ public interface World {
 
     public ChunkManager getChunkManager();
 
+    public String getPath();
+
 }

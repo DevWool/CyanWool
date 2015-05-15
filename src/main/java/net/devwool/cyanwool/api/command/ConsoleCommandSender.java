@@ -2,13 +2,13 @@ package net.devwool.cyanwool.api.command;
 
 import net.devwool.cyanwool.api.CyanWool;
 import net.devwool.cyanwool.api.Server;
-import net.devwool.cyanwool.api.utils.ChatColors;
+import net.devwool.cyanwool.api.utils.ChatColor;
 
 public class ConsoleCommandSender implements ICommandSender {
 
     @Override
     public void sendMessage(String message) {
-        String mess = ChatColors.stripColor(message);
+        String mess = ChatColor.stripColor(message);
         getServer().getLogger().info(mess);
     }
 

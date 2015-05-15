@@ -6,7 +6,7 @@ import java.util.List;
 import net.devwool.cyanwool.api.CyanWool;
 import net.devwool.cyanwool.api.command.Command;
 import net.devwool.cyanwool.api.command.ICommandSender;
-import net.devwool.cyanwool.api.utils.ChatColors;
+import net.devwool.cyanwool.api.utils.ChatColor;
 
 public class VersionCommand extends Command {
 
@@ -18,12 +18,12 @@ public class VersionCommand extends Command {
     public void execute(ICommandSender sender, String[] args) {
         // ???
         List<String> list = new ArrayList<String>();
-        list.add(ChatColors.GREEN + "#=====#_" + ChatColors.AQUA + "CyanWool" + ChatColors.GREEN + "#=====#");
-        list.add(ChatColors.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.modname") + ": " + ChatColors.WHITE + CyanWool.getModName());
-        list.add(ChatColors.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.mcversion") + ": " + ChatColors.WHITE + CyanWool.getMCVersion());
+        list.add(ChatColor.GREEN + "#=====#_" + ChatColor.AQUA + "CyanWool" + ChatColor.GREEN + "#=====#");
+        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.modname") + ": " + ChatColor.WHITE + CyanWool.getModName());
+        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.mcversion") + ": " + ChatColor.WHITE + CyanWool.getMCVersion());
 
         List<String> dev = CyanWool.getDevelopers();
-        list.add(ChatColors.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.developers") + ": ");
+        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.developers") + ": ");
         for (String developer : dev) {
             list.add("- " + developer);
         }
