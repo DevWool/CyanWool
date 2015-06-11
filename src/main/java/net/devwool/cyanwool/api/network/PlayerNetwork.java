@@ -16,7 +16,7 @@ public interface PlayerNetwork {
 
     public void removeListener(SessionListener listener);
 
-    public void disconnect(String string);
+    public void disconnect(String reason);
 
     public String getHost();
 

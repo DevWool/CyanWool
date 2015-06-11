@@ -1,39 +1,49 @@
 package net.devwool.cyanwool.api.item;
 
+import net.devwool.cyanwool.api.material.ItemMaterial;
+
 import org.spacehq.opennbt.tag.builtin.CompoundTag;
 import org.spacehq.opennbt.tag.builtin.StringTag;
 
 public class ItemStack {
 
-    private ItemType itemType;
-    private int itemDamage;
+    private ItemMaterial itemType;
+    private int durability;
     private int amount;
     private CompoundTag tag;
 
-    public ItemStack(ItemType type, int amount, int damage) {
+    public ItemStack(ItemMaterial type, int amount, int durability) {
         this.itemType = type;
         this.amount = amount;
-        this.itemDamage = damage;
+        this.durability = durability;
     }
 
-    public ItemStack(ItemType type, int amount) {
+    public ItemStack(ItemMaterial type, int amount) {
         this(type, amount, 0);
     }
 
-    public ItemStack(ItemType type) {
+    public ItemStack(ItemMaterial type) {
         this(type, 1, 0);
     }
 
-    public ItemType getItemType() {
+    public ItemMaterial getItemType() {
         return itemType;
     }
 
-    public int getData() {
-        return getItemType().getData();
+    public int getMinecraftData() {
+        return getItemType().getMinecraftData();
     }
 
-    public void setData(int data) {
-        getItemType().setData(data);
+    public void setMinecraftData(int data) {
+        getItemType().setMinecraftData(data);
+    }
+
+    public int getCustomData() {
+        return getItemType().getCustomData();
+    }
+
+    public void setCustomData(int data) {
+        getItemType().setCustomData(data);
     }
 
     public int getAmount() {
@@ -48,24 +58,16 @@ public class ItemStack {
     }
 
     public boolean isItemDamaged() {
-        return getItemType().isDamageable() && getItemDamage() > 0;
+        return getItemType().isDamageable() && getDurability() > 0;
     }
 
-    public int getItemDamage() {
-        return itemDamage;
-    }
+    // public int getMaxItemUseDuration() {
+    // return getItemType().getMaxItemUseDuration(this);
+    // }
 
-    public void setItemDamage(int meta) {
-        this.itemDamage = meta;
-    }
-
-    public int getMaxItemUseDuration() {
-        return getItemType().getMaxItemUseDuration(this);
-    }
-
-    public Action getItemUseAction() {
-        return getItemType().getItemUseAction(this);
-    }
+    // public Action getItemUseAction() {
+    // return getItemType().getItemUseAction(this);
+    // }
 
     public String getDisplayName() {
         String name = getItemType().getStringId();
@@ -110,5 +112,13 @@ public class ItemStack {
     }
 
     public void setCompountTag(CompoundTag tag) {
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public void setDurability(int durability) {
+        this.durability = durability;
     }
 }

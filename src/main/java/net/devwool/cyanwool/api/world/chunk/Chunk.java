@@ -3,8 +3,8 @@ package net.devwool.cyanwool.api.world.chunk;
 import java.util.List;
 
 import net.devwool.cyanwool.api.block.Block;
-import net.devwool.cyanwool.api.block.BlockType;
 import net.devwool.cyanwool.api.entity.Entity;
+import net.devwool.cyanwool.api.material3.blocks.BlockMaterial;
 import net.devwool.cyanwool.api.world.LightType;
 import net.devwool.cyanwool.api.world.Position;
 import net.devwool.cyanwool.api.world.World;
@@ -33,9 +33,9 @@ public interface Chunk {
 
     public Block getBlock(Position pos);
 
-    public void setBlock(int x, int y, int z, BlockType type);
+    public void setBlock(int x, int y, int z, BlockMaterial type);
 
-    public void setBlock(Position pos, BlockType type);
+    public void setBlock(Position pos, BlockMaterial type);
 
     public int getLightLevel(int x, int y, int z);
 

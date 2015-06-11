@@ -5,14 +5,16 @@ import java.util.List;
 import net.devwool.cyanwool.api.command.CommandManager;
 import net.devwool.cyanwool.api.command.ConsoleCommandSender;
 import net.devwool.cyanwool.api.entity.EntityManager;
+import net.devwool.cyanwool.api.io.IOManager;
 import net.devwool.cyanwool.api.lang.LanguageManager;
 import net.devwool.cyanwool.api.management.OperatorsManager;
 import net.devwool.cyanwool.api.management.PlayerManager;
 import net.devwool.cyanwool.api.management.WhitelistManager;
+import net.devwool.cyanwool.api.material3.Registry;
 import net.devwool.cyanwool.api.network.NetworkServer;
 import net.devwool.cyanwool.api.packs.ServerPack;
 import net.devwool.cyanwool.api.plugins.PluginManager;
-import net.devwool.cyanwool.api.utils.Registry;
+import net.devwool.cyanwool.api.utils.ServerConfiguration;
 
 import org.apache.logging.log4j.Logger;
 
@@ -196,5 +198,19 @@ public class CyanWool {
      */
     public ServerPack getServerPack() {
         return getServer().getServerPack();
+    }
+
+    /**
+     * Настройки сервера
+     */
+    public ServerConfiguration getServerConfiguration() {
+        return getServer().getServerConfiguration();
+    }
+
+    /**
+     * Менеджер для чтения/записи (Input/Output)
+     */
+    public IOManager getIOManager() {
+        return getServer().getIOManager();
     }
 }

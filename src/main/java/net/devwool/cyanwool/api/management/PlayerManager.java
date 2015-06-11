@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.devwool.cyanwool.api.Server;
 import net.devwool.cyanwool.api.entity.player.Player;
+import net.devwool.cyanwool.api.world.World;
 
 public interface PlayerManager {
 
@@ -15,5 +16,9 @@ public interface PlayerManager {
 
     public void leavePlayer(Player player);
 
-    public List getPlayers();
+    public List<Player> getPlayers();
+
+    public void sendMessageForAll(String message);
+
+    public void sendMessageForAll(World world, String message);
 }
