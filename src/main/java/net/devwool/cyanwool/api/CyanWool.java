@@ -14,6 +14,7 @@ import net.devwool.cyanwool.api.material3.Registry;
 import net.devwool.cyanwool.api.network.NetworkServer;
 import net.devwool.cyanwool.api.packs.ServerPack;
 import net.devwool.cyanwool.api.plugins.PluginManager;
+import net.devwool.cyanwool.api.scheduler.Scheduler;
 import net.devwool.cyanwool.api.utils.ServerConfiguration;
 
 import org.apache.logging.log4j.Logger;
@@ -212,5 +213,12 @@ public class CyanWool {
      */
     public IOManager getIOManager() {
         return getServer().getIOManager();
+    }
+
+    /**
+     * 
+     */
+    public Scheduler getScheduler() {
+        return getServer().getScheduler();
     }
 }

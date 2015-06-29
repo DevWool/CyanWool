@@ -1,6 +1,6 @@
 package net.devwool.cyanwool.api.item;
 
-import net.devwool.cyanwool.api.material.ItemMaterial;
+import net.devwool.cyanwool.api.material3.items.ItemMaterial;
 
 import org.spacehq.opennbt.tag.builtin.CompoundTag;
 import org.spacehq.opennbt.tag.builtin.StringTag;

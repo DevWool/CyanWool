@@ -9,6 +9,9 @@ import net.devwool.cyanwool.api.world.LightType;
 import net.devwool.cyanwool.api.world.Position;
 import net.devwool.cyanwool.api.world.World;
 
+import org.spacehq.mc.protocol.data.game.NibbleArray3d;
+import org.spacehq.mc.protocol.data.game.ShortArray3d;
+
 public interface Chunk {
 
     public int getX();
@@ -60,5 +63,11 @@ public interface Chunk {
     public boolean isLoaded();
 
     public World getWorld();
+
+    public ShortArray3d getBlocks();
+
+    public NibbleArray3d getBlockLight();
+
+    public NibbleArray3d getSkyLight();
 
 }

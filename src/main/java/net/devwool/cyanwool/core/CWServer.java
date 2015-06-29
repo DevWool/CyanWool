@@ -19,6 +19,14 @@ import net.devwool.cyanwool.api.plugins.PluginManager;
 import net.devwool.cyanwool.api.scheduler.Scheduler;
 import net.devwool.cyanwool.api.utils.ServerConfiguration;
 import net.devwool.cyanwool.api.world.WorldManager;
+import net.devwool.cyanwool.core.entity.CWEntityManager;
+import net.devwool.cyanwool.core.lang.CWLanguageManager;
+import net.devwool.cyanwool.core.management.CWOperatorsManager;
+import net.devwool.cyanwool.core.management.CWPlayerManager;
+import net.devwool.cyanwool.core.management.CWWhitelistManager;
+import net.devwool.cyanwool.core.network.CWNetworkServer;
+import net.devwool.cyanwool.core.scheduler.CWScheduler;
+import net.devwool.cyanwool.core.world.CWWorldManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -64,19 +72,30 @@ public class CWServer implements Server {
 
         getDevelopers().add("BeYkeRYkt");
 
-        // init configutation
-        this.configuration = new CWConfiguration();
-        this.whitelist = new CWWhitelistManager();
+        // init
+        this.configuration = new CWServerConfiguration();
+        this.whitelist = new CWWhitelistManager(this);
+        this.opManager = new CWOperatorsManager(this);
+        this.playerManager = new CWPlayerManager(this);
+        this.cmdManager = new CommandManager(this);
+        this.ioManager = new CWIOManager();
+        this.worldManager = new CWWorldManager(this);
+        this.entityManager = new CWEntityManager(this);
+        this.langManager = new CWLanguageManager();
+        this.registry = new CWRegistry();
+        this.scheduler = new CWScheduler(this);
 
         // init server pack...
         this.pack = new MinecraftServerPack();
-        // init scheduler
-        this.scheduler = new CWScheduler();
 
         // Loading assets
         getServerPack().registerItems();
         getServerPack().registerBlocks();
 
+        // init network server
+        CWNetworkServer server = new CWNetworkServer(this);
+        this.networkServer = server;
+        server.start();
     }
 
     @Override
@@ -168,6 +187,11 @@ public class CWServer implements Server {
     @Override
     public WorldManager getWorldManager() {
         return worldManager;
+    }
+
+    @Override
+    public Scheduler getScheduler() {
+        return scheduler;
     }
 
 }

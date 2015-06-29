@@ -1,24 +1,20 @@
 package net.devwool.cyanwool.api.lang;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface LanguageManager {
 
     public void registerLanguageFile(LanguageFile file);
 
-    public void removeLanguageFile(String isoCode);
+    public void removeLanguageFile(String localeCode);
 
-    public boolean hasAvailableLanguage(String isoCode);
-
-    public String getLocale(String code, String unlocalizeName);
-
-    public void setLocale(String code, String unlocalizeName);
-
-    public boolean hasLocale(String code, String unlocalizeName);
+    public boolean hasAvailableLanguage(String localeCode);
 
     public void loadAllLanguages();
 
     public void refreshLanguages();
 
-    public List<LanguageFile> getLanguages();
+    public Collection<LanguageFile> getLanguages();
+
+    public LanguageFile getLanguageFile(String localeCode);
 }

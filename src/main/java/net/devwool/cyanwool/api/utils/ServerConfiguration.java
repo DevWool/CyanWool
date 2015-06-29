@@ -24,5 +24,9 @@ public interface ServerConfiguration {
 
     public int getMaxIterationsIO();
 
-    public int setMaxIterationsIO(int iterations);
+    public void setMaxIterationsIO(int iterations);
+
+    public int getCountThreads();
+
+    public void setCountThreads(int count);
 }

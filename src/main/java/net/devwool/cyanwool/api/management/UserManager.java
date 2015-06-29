@@ -1,5 +1,6 @@
 package net.devwool.cyanwool.api.management;
 
+import java.util.List;
 import java.util.UUID;
 
 import net.devwool.cyanwool.api.Server;
@@ -13,5 +14,7 @@ public interface UserManager {
     public void removePlayer(UUID uuid);
 
     public Server getServer();
+
+    public List<UUID> getUUID();
 
 }

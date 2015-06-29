@@ -32,13 +32,13 @@ public class CommandManager {
         Command command = commands.get(label);
         if (command == null) {
             // String text = "Unknown command. Type /help for help.";
-            String text = getServer().getLanguageManager().getLocale(sender.getLangCode(), "cw.unknownCommand");
+            String text = getServer().getLanguageManager().getLanguageFile(sender.getLangCode()).getValue("cw.unknownCommand");
             sender.sendMessage(text);
             return;
         }
         if (sender instanceof ConsoleCommandSender && !command.isConsoleAccess()) {
             // String text = "This command is not accesible from console.";
-            String text = getServer().getLanguageManager().getLocale(sender.getLangCode(), "cw.notAccesibleFromConsole");
+            String text = getServer().getLanguageManager().getLanguageFile(sender.getLangCode()).getValue("cw.notAccesibleFromConsole");
             sender.sendMessage(text);
             return;
         }

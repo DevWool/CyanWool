@@ -48,11 +48,9 @@ public interface Entity {
 
     public Entity getVehicle();
 
-    public void setVehicle(Entity entity);
-
     public boolean canSeeEntity(Entity entity);
 
-    public boolean canSeeLocation(Position pos);
+    public boolean canSeePosition(Position pos);
 
     public Server getServer();
 
@@ -77,4 +75,6 @@ public interface Entity {
     public List<Packet> getUpdatePackets();
 
     public abstract List<Packet> getSpawnPackets();
+
+    public void setEntityID(int id);
 }

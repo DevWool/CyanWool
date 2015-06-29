@@ -14,6 +14,7 @@ import net.devwool.cyanwool.api.material3.Registry;
 import net.devwool.cyanwool.api.network.NetworkServer;
 import net.devwool.cyanwool.api.packs.ServerPack;
 import net.devwool.cyanwool.api.plugins.PluginManager;
+import net.devwool.cyanwool.api.scheduler.Scheduler;
 import net.devwool.cyanwool.api.utils.ServerConfiguration;
 import net.devwool.cyanwool.api.world.WorldManager;
 
@@ -154,4 +155,9 @@ public interface Server {
      * Менеджер для работ с мирами
      */
     public WorldManager getWorldManager();
+
+    /**
+     * 
+     */
+    public Scheduler getScheduler();
 }

@@ -1,4 +1,4 @@
-package net.devwool.cyanwool.api.entity.player;
+package net.devwool.cyanwool.api.entity.alive.player;
 
 import net.devwool.cyanwool.api.entity.EntityLivingBase;
 import net.devwool.cyanwool.api.world.Position;

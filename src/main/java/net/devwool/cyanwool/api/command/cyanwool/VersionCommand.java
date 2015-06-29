@@ -19,11 +19,11 @@ public class VersionCommand extends Command {
         // ???
         List<String> list = new ArrayList<String>();
         list.add(ChatColor.GREEN + "#=====#_" + ChatColor.AQUA + "CyanWool" + ChatColor.GREEN + "#=====#");
-        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.modname") + ": " + ChatColor.WHITE + CyanWool.getModName());
-        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.mcversion") + ": " + ChatColor.WHITE + CyanWool.getMCVersion());
+        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLanguageFile(sender.getLangCode()).getValue("cw.version.modname") + ": " + ChatColor.WHITE + CyanWool.getModName());
+        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLanguageFile(sender.getLangCode()).getValue("cw.version.mcversion") + ": " + ChatColor.WHITE + CyanWool.getMCVersion());
 
         List<String> dev = CyanWool.getDevelopers();
-        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLocale(sender.getLangCode(), "cw.version.developers") + ": ");
+        list.add(ChatColor.AQUA + CyanWool.getLanguageManager().getLanguageFile(sender.getLangCode()).getValue("cw.version.developers") + ": ");
         for (String developer : dev) {
             list.add("- " + developer);
         }

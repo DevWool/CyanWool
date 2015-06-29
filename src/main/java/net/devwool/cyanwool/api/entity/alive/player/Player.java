@@ -1,25 +1,27 @@
-package net.devwool.cyanwool.api.entity.player;
+package net.devwool.cyanwool.api.entity.alive.player;
 
 import java.util.List;
 
 import net.devwool.cyanwool.api.command.ICommandSender;
-import net.devwool.cyanwool.api.entity.meta.ClientSettings;
-import net.devwool.cyanwool.api.management.PlayerData;
+import net.devwool.cyanwool.api.entity.meta.player.ClientSettings;
 import net.devwool.cyanwool.api.network.PlayerNetwork;
 import net.devwool.cyanwool.api.world.Position;
 import net.devwool.cyanwool.api.world.chunk.Chunk;
 import net.devwool.cyanwool.api.world.chunk.ChunkCoords;
 
-import org.spacehq.mc.protocol.data.game.values.world.Particle;
+import org.spacehq.mc.auth.GameProfile;
+import org.spacehq.mc.protocol.data.game.values.PlayerListEntry;
 import org.spacehq.mc.protocol.data.game.values.world.Sound;
 import org.spacehq.mc.protocol.data.game.values.world.effect.WorldEffect;
 import org.spacehq.mc.protocol.data.game.values.world.effect.WorldEffectData;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Particle;
 
 public interface Player extends Human, ICommandSender {
 
     public void kickPlayer(String message);
 
-    public PlayerData getPlayerData();
+    public GameProfile getGameProfile();
 
     public ClientSettings getClientSettings();
 
@@ -60,4 +62,8 @@ public interface Player extends Human, ICommandSender {
     public void respawn();
 
     public PlayerNetwork getPlayerNetwork();
+
+    public PlayerListEntry getPlayerListEntry();
+
+    public boolean isOnline();
 }

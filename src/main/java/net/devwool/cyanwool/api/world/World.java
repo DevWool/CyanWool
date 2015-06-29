@@ -6,10 +6,13 @@ import net.devwool.cyanwool.api.Server;
 import net.devwool.cyanwool.api.block.Block;
 import net.devwool.cyanwool.api.entity.Entity;
 import net.devwool.cyanwool.api.entity.EntityLivingBase;
-import net.devwool.cyanwool.api.entity.player.Player;
+import net.devwool.cyanwool.api.entity.alive.player.Player;
 import net.devwool.cyanwool.api.material3.blocks.BlockMaterial;
 import net.devwool.cyanwool.api.world.chunk.ChunkManager;
 
+import org.spacehq.mc.protocol.data.game.values.entity.MobType;
+import org.spacehq.mc.protocol.data.game.values.entity.ObjectData;
+import org.spacehq.mc.protocol.data.game.values.entity.ObjectType;
 import org.spacehq.mc.protocol.data.game.values.entity.player.GameMode;
 import org.spacehq.mc.protocol.data.game.values.setting.Difficulty;
 import org.spacehq.mc.protocol.data.game.values.world.Particle;
@@ -59,7 +62,11 @@ public interface World {
 
     public void playParticleExpect(Position pos, Particle particle, int amount, int data, Player player);
 
-    public Entity spawnEntity(Entity entity, Position pos);
+    public Entity spawnEntity(MobType type, Position pos);
+
+    public Entity spawnObject(ObjectType type, ObjectData data, Position pos);
+
+    public Entity spawnUnknownEntity(Entity entity, Position pos);
 
     public long getSeed();
 
@@ -116,4 +123,6 @@ public interface World {
     public boolean isHardcore();
 
     public void setHardcore(boolean flag);
+
+    public String getName();
 }

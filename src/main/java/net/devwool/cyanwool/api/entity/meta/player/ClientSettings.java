@@ -1,4 +1,4 @@
-package net.devwool.cyanwool.api.entity.meta;
+package net.devwool.cyanwool.api.entity.meta.player;
 
 import java.util.ArrayList;
 import java.util.List;

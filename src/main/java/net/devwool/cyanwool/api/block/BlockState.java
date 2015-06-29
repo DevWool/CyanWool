@@ -1,6 +1,6 @@
 package net.devwool.cyanwool.api.block;
 
-import net.devwool.cyanwool.api.material.BlockMaterial;
+import net.devwool.cyanwool.api.material3.blocks.BlockMaterial;
 
 public interface BlockState {
 

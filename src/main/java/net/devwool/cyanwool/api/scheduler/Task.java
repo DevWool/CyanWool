@@ -1,12 +1,16 @@
 package net.devwool.cyanwool.api.scheduler;
 
-public interface Task extends Runnable {
+import java.util.concurrent.Future;
+
+public interface Task {
 
     public boolean cancel();
 
     public boolean isCancelled();
 
-    // public boolean isDone();
+    public boolean isDone();
 
     public int getID();
+
+    public Future<?> getScheduledFuture();
 }

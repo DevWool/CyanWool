@@ -6,6 +6,8 @@ public interface LanguageFile {
 
     public void setValue(String unlocalizedName, String value);
 
-    public String getISOCode();
+    public boolean hasValue(String unlocalizeName);
+
+    public String getLocaleCode();
 
 }
