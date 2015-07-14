@@ -1,4 +1,4 @@
-![](https://github.com/BeYkeRYkt/CyanWool/blob/master/others/Logo.png)
+![](https://raw.githubusercontent.com/DevWool/CyanWool/experimental/others/Logo_Redesign_5.png)
 # CyanWool - Experimental 
 
 Recoded version CyanWool. 
