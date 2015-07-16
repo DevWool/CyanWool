@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>net.devwool</groupId>
+  <groupId>net.cyanwool</groupId>
   <artifactId>cyanwool</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>cyanwool</name>
+  <name>CyanWool</name>
   <url>http://maven.apache.org</url>
   <description>Experimental server platform.</description>
   
@@ -36,6 +36,10 @@
 	  <id>sonatype-public</id>
 	  <url>https://oss.sonatype.org/content/groups/public/</url>
 	</repository>
+	<repository>
+	  <id>methuselah-repo</id>
+	  <url>https://maven.methuselah.ru/</url>
+	</repository>
   </repositories>
   
   <dependencies>
@@ -52,10 +56,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.spacehq</groupId>
-      <artifactId>mcprotocollib</artifactId>
-      <version>1.8-SNAPSHOT</version>
-      <scope>compile</scope>
+      <groupId>net.cyanwool</groupId>
+      <artifactId>CyanWoolAPI</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
        <groupId>org.spacehq</groupId>
@@ -71,6 +74,12 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
       <version>2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.spacehq</groupId>
+      <artifactId>mcprotocollib</artifactId>
+      <version>1.8-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
 	<dependency>
       <groupId>org.yaml</groupId>
@@ -116,7 +125,7 @@
                 <configuration>
                         <archive>
                                 <manifest>
-                                        <mainClass>net.devwool.cyanwool.core.Starter</mainClass>
+                                        <mainClass>net.cyanwool.core.Starter</mainClass>
                                 </manifest>
                         </archive>
                 </configuration>
