@@ -4,7 +4,7 @@ import net.cyanwool.api.entity.Entity;
 import net.cyanwool.api.entity.component.generic.Transport;
 import net.cyanwool.core.entity.component.CWComponent;
 
-public class CWTransport extends CWComponent implements Transport{
+public class CWTransport extends CWComponent implements Transport {
 
 	public CWTransport(Entity entity) {
 		super(entity, "transport");
@@ -13,7 +13,7 @@ public class CWTransport extends CWComponent implements Transport{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public class CWTransport extends CWComponent implements Transport{
 	@Override
 	public void setPassenger(Entity entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

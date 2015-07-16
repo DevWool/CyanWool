@@ -9,16 +9,16 @@ import org.spacehq.packetlib.Session;
 
 public class ServerLogin implements ServerLoginHandler {
 
-    private Server server;
+	private Server server;
 
-    public ServerLogin(Server server) {
-        this.server = server;
-    }
+	public ServerLogin(Server server) {
+		this.server = server;
+	}
 
-    @Override
-    public void loggedIn(Session session) {
-        GameProfile profile = session.getFlag(ProtocolConstants.PROFILE_KEY);
-        server.getPlayerManager().joinPlayer(profile);
-    }
+	@Override
+	public void loggedIn(Session session) {
+		GameProfile profile = session.getFlag(ProtocolConstants.PROFILE_KEY);
+		server.getPlayerManager().joinPlayer(profile);
+	}
 
 }

@@ -14,90 +14,90 @@ import org.spacehq.packetlib.tcp.TcpSessionFactory;
 
 public class CWNetworkServer implements NetworkServer {
 
-    private net.cyanwool.api.Server server;
-    private Server protocolServer;
+	private net.cyanwool.api.Server server;
+	private Server protocolServer;
 
-    public CWNetworkServer(net.cyanwool.api.Server server) {
-        this.server = server;
-    }
+	public CWNetworkServer(net.cyanwool.api.Server server) {
+		this.server = server;
+	}
 
-    public void start() {
-        if (protocolServer == null) {
-            try {
-                this.protocolServer = new Server(server.getServerConfiguration().getIPAdress(), server.getServerConfiguration().getPort(), MinecraftProtocol.class, new TcpSessionFactory());
+	public void start() {
+		if (protocolServer == null) {
+			try {
+				this.protocolServer = new Server(server.getServerConfiguration().getIPAdress(), server.getServerConfiguration().getPort(), MinecraftProtocol.class, new TcpSessionFactory());
 
-                protocolServer.setGlobalFlag(ProtocolConstants.VERIFY_USERS_KEY, server.getServerConfiguration().isOnlineMode());
-                protocolServer.setGlobalFlag(ProtocolConstants.SERVER_INFO_BUILDER_KEY, new ServerInfo(server));
-                protocolServer.setGlobalFlag(ProtocolConstants.SERVER_LOGIN_HANDLER_KEY, new ServerLogin(server));
-                protocolServer.addListener(new CWServerListener(server));
-                protocolServer.setGlobalFlag(ProtocolConstants.SERVER_COMPRESSION_THRESHOLD, 256);
+				protocolServer.setGlobalFlag(ProtocolConstants.VERIFY_USERS_KEY, server.getServerConfiguration().isOnlineMode());
+				protocolServer.setGlobalFlag(ProtocolConstants.SERVER_INFO_BUILDER_KEY, new ServerInfo(server));
+				protocolServer.setGlobalFlag(ProtocolConstants.SERVER_LOGIN_HANDLER_KEY, new ServerLogin(server));
+				protocolServer.addListener(new CWServerListener(server));
+				protocolServer.setGlobalFlag(ProtocolConstants.SERVER_COMPRESSION_THRESHOLD, 256);
 
-                protocolServer.bind();
-                server.getLogger().info("Protocol server is started!");
-            } catch (Exception ex) {
-                server.getLogger().info("Server crashed: ");
-                ex.printStackTrace();
-            }
-        }
-    }
+				protocolServer.bind();
+				server.getLogger().info("Protocol server is started!");
+			} catch (Exception ex) {
+				server.getLogger().info("Server crashed: ");
+				ex.printStackTrace();
+			}
+		}
+	}
 
-    @Override
-    public net.cyanwool.api.Server getServer() {
-        return server;
-    }
+	@Override
+	public net.cyanwool.api.Server getServer() {
+		return server;
+	}
 
-    @Override
-    public Server getProtocolServer() {
-        return protocolServer;
-    }
+	@Override
+	public Server getProtocolServer() {
+		return protocolServer;
+	}
 
-    @Override
-    public int getPort() {
-        return getServer().getServerConfiguration().getPort();
-    }
+	@Override
+	public int getPort() {
+		return getServer().getServerConfiguration().getPort();
+	}
 
-    @Override
-    public String getHostAddress() {
-        return getServer().getServerConfiguration().getIPAdress();
-    }
+	@Override
+	public String getHostAddress() {
+		return getServer().getServerConfiguration().getIPAdress();
+	}
 
-    @Override
-    public void sendPacketForAll(Packet packet) {
-        for (Player player : getServer().getPlayerManager().getPlayers()) {
-            player.getPlayerNetwork().sendPacket(packet);
-        }
-    }
+	@Override
+	public void sendPacketForAll(Packet packet) {
+		for (Player player : getServer().getPlayerManager().getPlayers()) {
+			player.getPlayerNetwork().sendPacket(packet);
+		}
+	}
 
-    @Override
-    public void sendPacketDistance(Position pos, Packet packet, int radius) {
-        for (Player player : getServer().getPlayerManager().getPlayers()) {
-            if (player.getWorld().getName().equals(pos.getWorld().getName())) {
-                if (player.getPosition().distanceTo(pos) < radius) {
-                    player.getPlayerNetwork().sendPacket(packet);
-                }
-            }
-        }
-    }
+	@Override
+	public void sendPacketDistance(Position pos, Packet packet, int radius) {
+		for (Player player : getServer().getPlayerManager().getPlayers()) {
+			if (player.getWorld().getName().equals(pos.getWorld().getName())) {
+				if (player.getPosition().distanceTo(pos) < radius) {
+					player.getPlayerNetwork().sendPacket(packet);
+				}
+			}
+		}
+	}
 
-    @Override
-    public void sendPacketForAllExpect(Packet packet, Player expect) {
-        for (Player player : server.getPlayerManager().getPlayers()) {
-            if (!player.equals(expect)) {
-                player.getPlayerNetwork().sendPacket(packet);
-            }
-        }
-    }
+	@Override
+	public void sendPacketForAllExpect(Packet packet, Player expect) {
+		for (Player player : server.getPlayerManager().getPlayers()) {
+			if (!player.equals(expect)) {
+				player.getPlayerNetwork().sendPacket(packet);
+			}
+		}
+	}
 
-    @Override
-    public void sendPacketDistanceExpect(Position pos, Packet packet, int radius, Player expect) {
-        for (Player player : getServer().getPlayerManager().getPlayers()) {
-            if (!player.equals(expect)) {
-                if (player.getWorld().getName().equals(pos.getWorld().getName())) {
-                    if (player.getPosition().distanceTo(pos) < radius) {
-                        player.getPlayerNetwork().sendPacket(packet);
-                    }
-                }
-            }
-        }
-    }
+	@Override
+	public void sendPacketDistanceExpect(Position pos, Packet packet, int radius, Player expect) {
+		for (Player player : getServer().getPlayerManager().getPlayers()) {
+			if (!player.equals(expect)) {
+				if (player.getWorld().getName().equals(pos.getWorld().getName())) {
+					if (player.getPosition().distanceTo(pos) < radius) {
+						player.getPlayerNetwork().sendPacket(packet);
+					}
+				}
+			}
+		}
+	}
 }

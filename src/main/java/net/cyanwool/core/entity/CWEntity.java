@@ -14,93 +14,93 @@ import net.cyanwool.core.entity.component.generic.CWTransport;
 
 public abstract class CWEntity implements Entity {
 
-    private Server server;
-    private Position pos;
-    private int entityId;
-    private boolean alive;
-    private boolean invisible;
-    private boolean onground;
+	private Server server;
+	private Position pos;
+	private int entityId;
+	private boolean alive;
+	private boolean invisible;
+	private boolean onground;
 	private EntityType entityType;
 	private ComponentManager componentManager;
 
-    public CWEntity(Server server, EntityType type) {
-        this.server = server;
-        this.entityType = type;
-        this.componentManager = new ComponentManager(this);
-        
-        //init first components
-        getComponentManager().addComponent(new CWBodyRotation(this));
-        getComponentManager().addComponent(new CWFireTicks(this));
-        getComponentManager().addComponent(new CWMovement(this));
-        getComponentManager().addComponent(new CWTransport(this));
-        getComponentManager().addComponent(new CWTransport(this));
-    }
+	public CWEntity(Server server, EntityType type) {
+		this.server = server;
+		this.entityType = type;
+		this.componentManager = new ComponentManager(this);
 
-    @Override
-    public Position getPosition() {
-        return pos;
-    }
+		// init first components
+		getComponentManager().addComponent(new CWBodyRotation(this));
+		getComponentManager().addComponent(new CWFireTicks(this));
+		getComponentManager().addComponent(new CWMovement(this));
+		getComponentManager().addComponent(new CWTransport(this));
+		getComponentManager().addComponent(new CWTransport(this));
+	}
 
-    @Override
-    public int getEntityID() {
-        return entityId;
-    }
-    
-    @Override
-    public void onTick() {
-    	getComponentManager().onUpdateComponents();
-    }
+	@Override
+	public Position getPosition() {
+		return pos;
+	}
 
-    @Override
-    public World getWorld() {
-        return getPosition().getWorld();
-    }
-    
-    @Override
-    public boolean isAlive() {
-        return alive;
-    }
+	@Override
+	public int getEntityID() {
+		return entityId;
+	}
 
-    @Override
-    public boolean isInvisible() {
-        return invisible;
-    }
+	@Override
+	public void onTick() {
+		getComponentManager().onUpdateComponents();
+	}
 
-    @Override
-    public boolean onGround() {
-        return onground;
-    }
+	@Override
+	public World getWorld() {
+		return getPosition().getWorld();
+	}
 
-    @Override
-    public void destroy() {
-    	getServer().getEntityManager().unregisterEntity(this);
-    }
+	@Override
+	public boolean isAlive() {
+		return alive;
+	}
 
-    @Override
-    public void setInvisible(boolean flag) {
-        this.invisible = flag;
-    }
+	@Override
+	public boolean isInvisible() {
+		return invisible;
+	}
 
-    @Override
-    public Chunk getChunk() {
-        return getPosition().getChunk();
-    }
+	@Override
+	public boolean onGround() {
+		return onground;
+	}
 
-    @Override
-    public Server getServer() {
-        return server;
-    }
+	@Override
+	public void destroy() {
+		getServer().getEntityManager().unregisterEntity(this);
+	}
 
-    @Override
-    public void setEntityID(int id) {
-    	this.entityId = id;
-    }
+	@Override
+	public void setInvisible(boolean flag) {
+		this.invisible = flag;
+	}
 
-	public EntityType getEntityType(){
+	@Override
+	public Chunk getChunk() {
+		return getPosition().getChunk();
+	}
+
+	@Override
+	public Server getServer() {
+		return server;
+	}
+
+	@Override
+	public void setEntityID(int id) {
+		this.entityId = id;
+	}
+
+	public EntityType getEntityType() {
 		return entityType;
 	}
-	
-	public ComponentManager getComponentManager(){
+
+	public ComponentManager getComponentManager() {
 		return componentManager;
 	}
 }

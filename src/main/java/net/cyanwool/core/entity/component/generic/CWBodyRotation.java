@@ -8,10 +8,10 @@ import net.cyanwool.api.utils.Rotation;
 import net.cyanwool.core.entity.component.CWComponent;
 import net.cyanwool.core.network.MCProtocolPacket;
 
-public class CWBodyRotation extends CWComponent implements BodyRotation{
+public class CWBodyRotation extends CWComponent implements BodyRotation {
 
 	private Rotation rotation;
-	
+
 	public CWBodyRotation(Entity entity) {
 		super(entity, "bodyRotation");
 		setBodyRotation(new Rotation(0, 0));

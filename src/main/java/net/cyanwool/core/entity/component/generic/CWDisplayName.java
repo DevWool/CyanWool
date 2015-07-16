@@ -4,7 +4,7 @@ import net.cyanwool.api.entity.Entity;
 import net.cyanwool.api.entity.component.generic.DisplayName;
 import net.cyanwool.core.entity.component.CWComponent;
 
-public class CWDisplayName extends CWComponent implements DisplayName{
+public class CWDisplayName extends CWComponent implements DisplayName {
 
 	private String displayName;
 	private boolean render;
@@ -30,7 +30,7 @@ public class CWDisplayName extends CWComponent implements DisplayName{
 	@Override
 	public void setDisplayName(String name) {
 		this.displayName = name;
-		//TODO: send metadata 
+		// TODO: send metadata
 	}
 
 	@Override
@@ -46,6 +46,6 @@ public class CWDisplayName extends CWComponent implements DisplayName{
 	@Override
 	public void setRenderDisplayName(boolean flag) {
 		this.render = flag;
-		//TODO: send metadata
+		// TODO: send metadata
 	}
 }

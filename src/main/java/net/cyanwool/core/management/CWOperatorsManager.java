@@ -5,8 +5,8 @@ import net.cyanwool.api.management.OperatorsManager;
 
 public class CWOperatorsManager extends CWUserManager implements OperatorsManager {
 
-    public CWOperatorsManager(Server server) {
-        super(server);
-    }
+	public CWOperatorsManager(Server server) {
+		super(server);
+	}
 
 }

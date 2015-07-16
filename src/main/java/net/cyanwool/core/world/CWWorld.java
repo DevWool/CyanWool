@@ -47,25 +47,25 @@ public class CWWorld implements World {
 	@Override
 	public void setBlock(Position pos, int id, int data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setBlock(int x, int y, int z, int id, int data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setBlock(Position pos, BlockMaterial type) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setBlock(int x, int y, int z, BlockMaterial type) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -77,67 +77,67 @@ public class CWWorld implements World {
 	@Override
 	public void setSpawnPosition(Position pos) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playSoundAtEntity(Entity entity, String sound, float volume, float pitch) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playSound(Position pos, String sound, float volume, float pitch) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playSoundExpect(Position pos, String sound, float volume, float pitch, Player player) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playSoundAtEntity(Entity entity, Sound sound, float volume, float pitch) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playSound(Position pos, Sound sound, float volume, float pitch) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playEffect(Position pos, Effect effect, int data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playSoundExpect(Position pos, Sound sound, float volume, float pitch, Player player) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playEffectExpect(Position pos, Effect effect, int data, Player player) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playParticle(Position pos, Particle particle, int amount, int data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void playParticleExpect(Position pos, Particle particle, int amount, int data, Player player) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -173,7 +173,7 @@ public class CWWorld implements World {
 	@Override
 	public void setWorldTime(long time) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -185,7 +185,7 @@ public class CWWorld implements World {
 	@Override
 	public void setThundering(boolean flag) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -197,7 +197,7 @@ public class CWWorld implements World {
 	@Override
 	public void setThunderTime(int time) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -209,7 +209,7 @@ public class CWWorld implements World {
 	@Override
 	public void setRaining(boolean rain) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -221,7 +221,7 @@ public class CWWorld implements World {
 	@Override
 	public void setRainTime(int time) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -251,7 +251,7 @@ public class CWWorld implements World {
 	@Override
 	public void onTick() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -263,7 +263,7 @@ public class CWWorld implements World {
 	@Override
 	public void setDifficulty(Difficulty diff) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -275,7 +275,7 @@ public class CWWorld implements World {
 	@Override
 	public void setDefaultGamemode(GameMode mode) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -287,7 +287,7 @@ public class CWWorld implements World {
 	@Override
 	public void setAutoSave(boolean value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -305,7 +305,7 @@ public class CWWorld implements World {
 	@Override
 	public void loadSpawnChunks() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -317,7 +317,7 @@ public class CWWorld implements World {
 	@Override
 	public void setHardcore(boolean flag) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

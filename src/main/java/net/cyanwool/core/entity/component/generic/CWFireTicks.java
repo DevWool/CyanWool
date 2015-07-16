@@ -4,19 +4,19 @@ import net.cyanwool.api.entity.Entity;
 import net.cyanwool.api.entity.component.generic.FireTicks;
 import net.cyanwool.core.entity.component.CWComponent;
 
-public class CWFireTicks extends CWComponent implements FireTicks{
+public class CWFireTicks extends CWComponent implements FireTicks {
 
 	private int ticks;
-	
+
 	public CWFireTicks(Entity entity) {
 		super(entity, "fireTicks");
 	}
 
 	@Override
 	public void update() {
-		if(getFireTicks() > 0){
+		if (getFireTicks() > 0) {
 			ticks--;
-		}else if(getFireTicks() < 0){
+		} else if (getFireTicks() < 0) {
 			ticks = 0;
 		}
 	}

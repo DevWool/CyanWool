@@ -9,9 +9,9 @@ import net.cyanwool.api.world.sounds.Sound;
 
 public abstract class CWEntityLivingBase extends CWEntity implements EntityLivingBase {
 
-    public CWEntityLivingBase(Server server, EntityType type) {
-        super(server, type);
-    }
+	public CWEntityLivingBase(Server server, EntityType type) {
+		super(server, type);
+	}
 
 	@Override
 	public void onTick() {
@@ -61,7 +61,7 @@ public abstract class CWEntityLivingBase extends CWEntity implements EntityLivin
 	@Override
 	public void setTarget(EntityLivingBase entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -91,19 +91,19 @@ public abstract class CWEntityLivingBase extends CWEntity implements EntityLivin
 	@Override
 	public void setDeathSound(Sound sound) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setDamageSound(Sound sound) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setTalkSound(Sound sound) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -127,36 +127,36 @@ public abstract class CWEntityLivingBase extends CWEntity implements EntityLivin
 	@Override
 	public void interact(EntityLivingBase entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onDamageEntity(Entity damager, float damage) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onAttackEntity(Entity target, float damage) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onDeathEntity() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onWalkingEntity() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onInteractEntity(EntityLivingBase interacter) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

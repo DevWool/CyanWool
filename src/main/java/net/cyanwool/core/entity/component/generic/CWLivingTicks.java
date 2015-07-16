@@ -4,7 +4,7 @@ import net.cyanwool.api.entity.Entity;
 import net.cyanwool.api.entity.component.generic.LivingTicks;
 import net.cyanwool.core.entity.component.CWComponent;
 
-public class CWLivingTicks extends CWComponent implements LivingTicks{
+public class CWLivingTicks extends CWComponent implements LivingTicks {
 
 	private int ticks;
 
@@ -14,7 +14,7 @@ public class CWLivingTicks extends CWComponent implements LivingTicks{
 
 	@Override
 	public void update() {
-		if(getEntity().isAlive()){
+		if (getEntity().isAlive()) {
 			ticks++;
 		}
 	}
@@ -33,6 +33,5 @@ public class CWLivingTicks extends CWComponent implements LivingTicks{
 	public void setLivedTicks(int ticks) {
 		this.ticks = ticks;
 	}
-
 
 }

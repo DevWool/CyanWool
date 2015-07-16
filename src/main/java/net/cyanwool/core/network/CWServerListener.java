@@ -14,24 +14,24 @@ import org.spacehq.packetlib.event.server.SessionRemovedEvent;
 
 public class CWServerListener extends ServerAdapter {
 
-    private Server server;
+	private Server server;
 
-    public CWServerListener(Server server) {
-        this.server = server;
-    }
+	public CWServerListener(Server server) {
+		this.server = server;
+	}
 
-    @Override
-    public void sessionAdded(SessionAddedEvent event) {
-        event.getSession().addListener(new PlaySessionAdapter(server));
-    }
+	@Override
+	public void sessionAdded(SessionAddedEvent event) {
+		event.getSession().addListener(new PlaySessionAdapter(server));
+	}
 
-    @Override
-    public void sessionRemoved(SessionRemovedEvent event) {
-        // FOR TODO: Customize leave message
-        if (((MinecraftProtocol) event.getSession().getPacketProtocol()).getMode() == ProtocolMode.GAME) {
-            GameProfile profile = event.getSession().getFlag(ProtocolConstants.PROFILE_KEY);
-            Player player = server.getPlayerManager().getPlayer(profile.getName());
-            server.getPlayerManager().leavePlayer(player);
-        }
-    }
+	@Override
+	public void sessionRemoved(SessionRemovedEvent event) {
+		// FOR TODO: Customize leave message
+		if (((MinecraftProtocol) event.getSession().getPacketProtocol()).getMode() == ProtocolMode.GAME) {
+			GameProfile profile = event.getSession().getFlag(ProtocolConstants.PROFILE_KEY);
+			Player player = server.getPlayerManager().getPlayer(profile.getName());
+			server.getPlayerManager().leavePlayer(player);
+		}
+	}
 }

@@ -9,41 +9,41 @@ import net.cyanwool.api.management.UserManager;
 
 public class CWUserManager implements UserManager {
 
-    private Server server;
-    private List<UUID> uuids;
+	private Server server;
+	private List<UUID> uuids;
 
-    public CWUserManager(Server server) {
-        this.server = server;
-        this.uuids = new CopyOnWriteArrayList<UUID>();
-    }
+	public CWUserManager(Server server) {
+		this.server = server;
+		this.uuids = new CopyOnWriteArrayList<UUID>();
+	}
 
-    @Override
-    public boolean checkPlayer(UUID uuid) {
-        return uuids.contains(uuid);
-    }
+	@Override
+	public boolean checkPlayer(UUID uuid) {
+		return uuids.contains(uuid);
+	}
 
-    @Override
-    public void addPlayer(UUID uuid) {
-        if (!checkPlayer(uuid)) {
-            uuids.add(uuid);
-        }
-    }
+	@Override
+	public void addPlayer(UUID uuid) {
+		if (!checkPlayer(uuid)) {
+			uuids.add(uuid);
+		}
+	}
 
-    @Override
-    public void removePlayer(UUID uuid) {
-        if (checkPlayer(uuid)) {
-            uuids.remove(uuid);
-        }
-    }
+	@Override
+	public void removePlayer(UUID uuid) {
+		if (checkPlayer(uuid)) {
+			uuids.remove(uuid);
+		}
+	}
 
-    @Override
-    public Server getServer() {
-        return server;
-    }
+	@Override
+	public Server getServer() {
+		return server;
+	}
 
-    @Override
-    public List<UUID> getUUID() {
-        return uuids;
-    }
+	@Override
+	public List<UUID> getUUID() {
+		return uuids;
+	}
 
 }

@@ -16,20 +16,20 @@ import org.spacehq.packetlib.Session;
 
 public class ServerInfo implements ServerInfoBuilder {
 
-    private Server server;
+	private Server server;
 
-    public ServerInfo(Server server) {
-        this.server = server;
-    }
+	public ServerInfo(Server server) {
+		this.server = server;
+	}
 
-    @Override
-    public ServerStatusInfo buildInfo(Session session) {
-        VersionInfo version = new VersionInfo(ProtocolConstants.GAME_VERSION, ProtocolConstants.PROTOCOL_VERSION);
-        PlayerInfo player = new PlayerInfo(server.getServerConfiguration().getMaxPlayers(), server.getPlayerManager().getPlayers().size(), new GameProfile[0]);
-        Message message = new TextMessage(server.getServerConfiguration().getMotd());
+	@Override
+	public ServerStatusInfo buildInfo(Session session) {
+		VersionInfo version = new VersionInfo(ProtocolConstants.GAME_VERSION, ProtocolConstants.PROTOCOL_VERSION);
+		PlayerInfo player = new PlayerInfo(server.getServerConfiguration().getMaxPlayers(), server.getPlayerManager().getPlayers().size(), new GameProfile[0]);
+		Message message = new TextMessage(server.getServerConfiguration().getMotd());
 
-        BufferedImage icon = server.getIcon();
-        return new ServerStatusInfo(version, player, message, icon);
-    }
+		BufferedImage icon = server.getIcon();
+		return new ServerStatusInfo(version, player, message, icon);
+	}
 
 }
