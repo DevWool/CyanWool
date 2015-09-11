@@ -1,11 +1,11 @@
 package net.cyanwool.core.network;
 
 import net.cyanwool.api.Server;
-import net.cyanwool.api.entity.types.player.Player;
+import net.cyanwool.api.entity.alive.player.Player;
 import net.cyanwool.api.network.Packet;
 import net.cyanwool.api.network.PlayerNetwork;
 
-public class CWPlayerNetwork implements PlayerNetwork {
+public class CyanPlayerNetwork implements PlayerNetwork {
 
 	@Override
 	public Player getPlayer() {

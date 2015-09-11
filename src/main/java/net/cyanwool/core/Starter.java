@@ -5,7 +5,7 @@ import net.cyanwool.api.CyanWool;
 public class Starter {
 
 	public static void main(String[] args) {
-		CWServer server = new CWServer();
+		CyanServer server = new CyanServer();
 		CyanWool.initServer(server);
 	}
 

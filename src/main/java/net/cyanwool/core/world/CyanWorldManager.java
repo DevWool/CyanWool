@@ -6,11 +6,11 @@ import net.cyanwool.api.Server;
 import net.cyanwool.api.world.World;
 import net.cyanwool.api.world.WorldManager;
 
-public class CWWorldManager implements WorldManager {
+public class CyanWorldManager implements WorldManager {
 
 	private Server server;
 
-	public CWWorldManager(Server server) {
+	public CyanWorldManager(Server server) {
 		this.server = server;
 	}
 

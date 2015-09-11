@@ -10,14 +10,14 @@ import net.cyanwool.api.Server;
 import net.cyanwool.api.scheduler.Scheduler;
 import net.cyanwool.api.scheduler.Task;
 
-public class CWScheduler implements Scheduler {
+public class CyanScheduler implements Scheduler {
 
 	private final HashMap<Integer, Task> tasks;
 	private ScheduledExecutorService es;
 	private int id;
 	private Server server;
 
-	public CWScheduler(Server server) {
+	public CyanScheduler(Server server) {
 		this.server = server;
 		this.tasks = new HashMap<Integer, Task>();
 		start();
@@ -47,7 +47,7 @@ public class CWScheduler implements Scheduler {
 	public Task runTask(Runnable r, long delay) {
 		long ticks = delay * 50;
 		ScheduledFuture<?> sch = getService().schedule(r, ticks, TimeUnit.MILLISECONDS);
-		Task task = new CWTask(id, sch);
+		Task task = new CyanTask(id, sch);
 		tasks.put(id, task);
 		id++;
 		return task;
@@ -58,7 +58,7 @@ public class CWScheduler implements Scheduler {
 		long afterTicks = startAfter * 50;
 		long ticks = delay * 50;
 		ScheduledFuture<?> sch = getService().scheduleWithFixedDelay(r, afterTicks, ticks, TimeUnit.MILLISECONDS);
-		Task task = new CWTask(id, sch);
+		Task task = new CyanTask(id, sch);
 		tasks.put(id, task);
 		id++;
 		return task;

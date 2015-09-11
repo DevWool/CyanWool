@@ -7,12 +7,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import net.cyanwool.api.Server;
 import net.cyanwool.api.management.UserManager;
 
-public class CWUserManager implements UserManager {
+public class CyanUserManager implements UserManager {
 
 	private Server server;
 	private List<UUID> uuids;
 
-	public CWUserManager(Server server) {
+	public CyanUserManager(Server server) {
 		this.server = server;
 		this.uuids = new CopyOnWriteArrayList<UUID>();
 	}

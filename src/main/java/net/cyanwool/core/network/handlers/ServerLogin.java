@@ -18,7 +18,7 @@ public class ServerLogin implements ServerLoginHandler {
 	@Override
 	public void loggedIn(Session session) {
 		GameProfile profile = session.getFlag(ProtocolConstants.PROFILE_KEY);
-		server.getPlayerManager().joinPlayer(profile);
+		// server.getPlayerManager().joinPlayer(profile);
 	}
 
 }

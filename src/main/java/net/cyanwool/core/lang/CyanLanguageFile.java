@@ -2,20 +2,24 @@ package net.cyanwool.core.lang;
 
 import java.util.HashMap;
 
-import net.cyanwool.api.lang.LanguageFile;
+import net.cyanwool.api.lang.ILanguageFile;
 
-public class CWLanguageFile implements LanguageFile {
+public class CyanLanguageFile implements ILanguageFile {
 
 	private String localeCode;
 	private HashMap<String, String> values = new HashMap<String, String>();
 
-	public CWLanguageFile(String localeCode) {
+	public CyanLanguageFile(String localeCode) {
 		this.localeCode = localeCode;
 	}
 
 	@Override
 	public String getValue(String unlocalizedName) {
-		return values.get(unlocalizedName);
+		String text = values.get(unlocalizedName);
+		if (text == null) {
+			text = "Missing translate";
+		}
+		return text;
 	}
 
 	@Override

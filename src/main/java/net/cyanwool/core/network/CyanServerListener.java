@@ -1,7 +1,7 @@
 package net.cyanwool.core.network;
 
 import net.cyanwool.api.Server;
-import net.cyanwool.api.entity.types.player.Player;
+import net.cyanwool.api.entity.alive.player.Player;
 import net.cyanwool.core.network.handlers.PlaySessionAdapter;
 
 import org.spacehq.mc.auth.GameProfile;
@@ -12,11 +12,11 @@ import org.spacehq.packetlib.event.server.ServerAdapter;
 import org.spacehq.packetlib.event.server.SessionAddedEvent;
 import org.spacehq.packetlib.event.server.SessionRemovedEvent;
 
-public class CWServerListener extends ServerAdapter {
+public class CyanServerListener extends ServerAdapter {
 
 	private Server server;
 
-	public CWServerListener(Server server) {
+	public CyanServerListener(Server server) {
 		this.server = server;
 	}
 

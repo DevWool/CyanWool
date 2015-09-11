@@ -1,35 +1,35 @@
 package net.cyanwool.core.network;
 
-import net.cyanwool.api.entity.types.player.Player;
+import org.spacehq.mc.protocol.MinecraftProtocol;
+import org.spacehq.mc.protocol.ProtocolConstants;
+import org.spacehq.packetlib.Server;
+import org.spacehq.packetlib.tcp.TcpSessionFactory;
+
+import net.cyanwool.api.entity.alive.player.Player;
 import net.cyanwool.api.network.NetworkServer;
 import net.cyanwool.api.network.Packet;
 import net.cyanwool.api.world.Position;
 import net.cyanwool.core.network.handlers.ServerInfo;
 import net.cyanwool.core.network.handlers.ServerLogin;
 
-import org.spacehq.mc.protocol.MinecraftProtocol;
-import org.spacehq.mc.protocol.ProtocolConstants;
-import org.spacehq.packetlib.Server;
-import org.spacehq.packetlib.tcp.TcpSessionFactory;
-
-public class CWNetworkServer implements NetworkServer {
+public class CyanNetworkServer implements NetworkServer {
 
 	private net.cyanwool.api.Server server;
 	private Server protocolServer;
 
-	public CWNetworkServer(net.cyanwool.api.Server server) {
+	public CyanNetworkServer(net.cyanwool.api.Server server) {
 		this.server = server;
 	}
 
 	public void start() {
 		if (protocolServer == null) {
 			try {
-				this.protocolServer = new Server(server.getServerConfiguration().getIPAdress(), server.getServerConfiguration().getPort(), MinecraftProtocol.class, new TcpSessionFactory());
+				this.protocolServer = new Server(server.getServerConfiguration().getIPAddress(), server.getServerConfiguration().getPort(), MinecraftProtocol.class, new TcpSessionFactory());
 
 				protocolServer.setGlobalFlag(ProtocolConstants.VERIFY_USERS_KEY, server.getServerConfiguration().isOnlineMode());
 				protocolServer.setGlobalFlag(ProtocolConstants.SERVER_INFO_BUILDER_KEY, new ServerInfo(server));
 				protocolServer.setGlobalFlag(ProtocolConstants.SERVER_LOGIN_HANDLER_KEY, new ServerLogin(server));
-				protocolServer.addListener(new CWServerListener(server));
+				protocolServer.addListener(new CyanServerListener(server));
 				protocolServer.setGlobalFlag(ProtocolConstants.SERVER_COMPRESSION_THRESHOLD, 256);
 
 				protocolServer.bind();
@@ -58,7 +58,7 @@ public class CWNetworkServer implements NetworkServer {
 
 	@Override
 	public String getHostAddress() {
-		return getServer().getServerConfiguration().getIPAdress();
+		return getServer().getServerConfiguration().getIPAddress();
 	}
 
 	@Override
@@ -99,5 +99,10 @@ public class CWNetworkServer implements NetworkServer {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void shutdown() {
+		getProtocolServer().close();
 	}
 }

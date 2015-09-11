@@ -12,19 +12,19 @@ import net.cyanwool.api.entity.EntityManager;
 import net.cyanwool.api.world.Position;
 import net.cyanwool.api.world.chunk.Chunk;
 
-public class CWEntityManager implements EntityManager {
+public class CyanEntityManager implements EntityManager {
 
 	private ConcurrentMap<Integer, Entity> entities = new ConcurrentHashMap<Integer, Entity>();
 	private Set<Integer> usedIds = new HashSet<Integer>();
 	private int last = 0;
 	private Server server;
 
-	public CWEntityManager(Server server) {
+	public CyanEntityManager(Server server) {
 		this.server = server;
 	}
 
 	@Override
-	public Collection<Entity> getAll() {
+	public Collection<Entity> getAllEntities() {
 		return entities.values();
 	}
 
@@ -34,8 +34,8 @@ public class CWEntityManager implements EntityManager {
 	}
 
 	@Override
-	public void registerEntity(final Entity entity) {
-		if (getEntity(entity.getEntityID()) != null) {
+	public void registerEntity(final Entity baseEntity) {
+		if (getEntity(baseEntity.getEntityID()) != null) {
 			return; // IMPOSIBBLEEE
 		}
 
@@ -45,50 +45,50 @@ public class CWEntityManager implements EntityManager {
 				continue;
 
 			if (usedIds.add(id)) {
-				entity.setEntityID(id);
+				baseEntity.setEntityID(id);
 				last = id;
 				break;
 			}
 		}
-		entities.put(entity.getEntityID(), entity);
-		Position loc = entity.getPosition();
-		loc.getChunk().getEntities().add(entity);
-		loc.getWorld().getEntities().add(entity);
+		entities.put(baseEntity.getEntityID(), baseEntity);
+		Position loc = baseEntity.getPosition();
+		loc.getChunk().getEntities().add(baseEntity);
+		loc.getWorld().getEntities().add(baseEntity);
 	}
 
 	@Override
-	public void unregisterEntity(Entity entity) {
-		entities.remove(entity.getEntityID());
-		usedIds.remove(entity.getEntityID());
-		for (Entity ent : entity.getChunk().getEntities()) {
-			if (ent.getEntityID() == entity.getEntityID()) {
-				entity.getChunk().getEntities().remove(ent);
+	public void unregisterEntity(Entity baseEntity) {
+		entities.remove(baseEntity.getEntityID());
+		usedIds.remove(baseEntity.getEntityID());
+		for (Entity ent : baseEntity.getChunk().getEntities()) {
+			if (ent.getEntityID() == baseEntity.getEntityID()) {
+				baseEntity.getChunk().getEntities().remove(ent);
 				break;
 			}
 		}
 
-		for (Entity ent : entity.getWorld().getEntities()) {
-			if (ent.getEntityID() == entity.getEntityID()) {
-				entity.getWorld().getEntities().remove(ent);
+		for (Entity ent : baseEntity.getWorld().getEntities()) {
+			if (ent.getEntityID() == baseEntity.getEntityID()) {
+				baseEntity.getWorld().getEntities().remove(ent);
 				break;
 			}
 		}
 	}
 
 	@Override
-	public void moveToOtherPosition(Entity entity, Position loc) {
-		Chunk prev = entity.getChunk();
+	public void moveToOtherPosition(Entity baseEntity, Position loc) {
+		Chunk prev = baseEntity.getChunk();
 		Chunk next = loc.getChunk();
 
 		if (!prev.equals(next)) {
 			for (Entity ent : prev.getEntities()) {
-				if (ent.getEntityID() == entity.getEntityID()) {
+				if (ent.getEntityID() == baseEntity.getEntityID()) {
 					prev.getEntities().remove(ent);
 					break;
 				}
 			}
 
-			next.getEntities().add(entity);
+			next.getEntities().add(baseEntity);
 		}
 	}
 

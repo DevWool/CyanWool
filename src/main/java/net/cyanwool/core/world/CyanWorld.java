@@ -6,8 +6,6 @@ import net.cyanwool.api.Server;
 import net.cyanwool.api.block.Block;
 import net.cyanwool.api.entity.Entity;
 import net.cyanwool.api.entity.EntityLivingBase;
-import net.cyanwool.api.entity.types.EntityType;
-import net.cyanwool.api.entity.types.player.Player;
 import net.cyanwool.api.material.blocks.BlockMaterial;
 import net.cyanwool.api.world.Difficulty;
 import net.cyanwool.api.world.GameMode;
@@ -18,7 +16,7 @@ import net.cyanwool.api.world.chunk.ChunkManager;
 import net.cyanwool.api.world.effect.Effect;
 import net.cyanwool.api.world.sounds.Sound;
 
-public class CWWorld implements World {
+public class CyanWorld implements World {
 
 	@Override
 	public Block getBlock(Position position) {
@@ -81,7 +79,7 @@ public class CWWorld implements World {
 	}
 
 	@Override
-	public void playSoundAtEntity(Entity entity, String sound, float volume, float pitch) {
+	public void playSoundAtEntity(Entity baseEntity, String sound, float volume, float pitch) {
 		// TODO Auto-generated method stub
 
 	}
@@ -93,13 +91,13 @@ public class CWWorld implements World {
 	}
 
 	@Override
-	public void playSoundExpect(Position pos, String sound, float volume, float pitch, Player player) {
+	public void playSoundExpect(Position pos, String sound, float volume, float pitch, net.cyanwool.api.entity.alive.player.Player player) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void playSoundAtEntity(Entity entity, Sound sound, float volume, float pitch) {
+	public void playSoundAtEntity(Entity baseEntity, Sound sound, float volume, float pitch) {
 		// TODO Auto-generated method stub
 
 	}
@@ -117,13 +115,13 @@ public class CWWorld implements World {
 	}
 
 	@Override
-	public void playSoundExpect(Position pos, Sound sound, float volume, float pitch, Player player) {
+	public void playSoundExpect(Position pos, Sound sound, float volume, float pitch, net.cyanwool.api.entity.alive.player.Player player) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void playEffectExpect(Position pos, Effect effect, int data, Player player) {
+	public void playEffectExpect(Position pos, Effect effect, int data, net.cyanwool.api.entity.alive.player.Player player) {
 		// TODO Auto-generated method stub
 
 	}
@@ -135,19 +133,25 @@ public class CWWorld implements World {
 	}
 
 	@Override
-	public void playParticleExpect(Position pos, Particle particle, int amount, int data, Player player) {
+	public void playParticleExpect(Position pos, Particle particle, int amount, int data, net.cyanwool.api.entity.alive.player.Player player) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public Entity spawnEntity(EntityType type, Position pos) {
+	public Entity spawnEntity(net.cyanwool.api.entity.EntityType type, Position pos) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Entity spawnUnknownEntity(Entity entity, Position pos) {
+	public Entity spawnUnknownEntity(Entity baseEntity, Position pos) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Entity spawnUnknownEntity(int id, Position pos) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -243,7 +247,7 @@ public class CWWorld implements World {
 	}
 
 	@Override
-	public List<Player> getPlayers() {
+	public List<net.cyanwool.api.entity.alive.player.Player> getPlayers() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -4,12 +4,12 @@ import java.util.concurrent.ScheduledFuture;
 
 import net.cyanwool.api.scheduler.Task;
 
-public class CWTask implements Task {
+public class CyanTask implements Task {
 
 	private ScheduledFuture<?> scheduledFuture;
 	private int id;
 
-	public CWTask(int id, ScheduledFuture<?> scheduledFuture) {
+	public CyanTask(int id, ScheduledFuture<?> scheduledFuture) {
 		this.id = id;
 		this.scheduledFuture = scheduledFuture;
 	}

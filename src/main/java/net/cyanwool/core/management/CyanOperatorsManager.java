@@ -3,9 +3,9 @@ package net.cyanwool.core.management;
 import net.cyanwool.api.Server;
 import net.cyanwool.api.management.OperatorsManager;
 
-public class CWOperatorsManager extends CWUserManager implements OperatorsManager {
+public class CyanOperatorsManager extends CyanUserManager implements OperatorsManager {
 
-	public CWOperatorsManager(Server server) {
+	public CyanOperatorsManager(Server server) {
 		super(server);
 	}
 

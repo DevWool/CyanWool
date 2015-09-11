@@ -3,9 +3,9 @@ package net.cyanwool.core.management;
 import net.cyanwool.api.Server;
 import net.cyanwool.api.management.WhitelistManager;
 
-public class CWWhitelistManager extends CWUserManager implements WhitelistManager {
+public class CyanWhitelistManager extends CyanUserManager implements WhitelistManager {
 
-	public CWWhitelistManager(Server server) {
+	public CyanWhitelistManager(Server server) {
 		super(server);
 	}
 
