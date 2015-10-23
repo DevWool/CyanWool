@@ -2,7 +2,7 @@ package net.cyanwool.core.network;
 
 import net.cyanwool.api.Server;
 import net.cyanwool.api.entity.alive.player.Player;
-import net.cyanwool.api.network.Packet;
+import net.cyanwool.api.network.IPacket;
 import net.cyanwool.api.network.PlayerNetwork;
 
 public class CyanPlayerNetwork implements PlayerNetwork {
@@ -14,7 +14,7 @@ public class CyanPlayerNetwork implements PlayerNetwork {
 	}
 
 	@Override
-	public void sendPacket(Packet packet) {
+	public void sendPacket(IPacket packet) {
 		// TODO Auto-generated method stub
 
 	}

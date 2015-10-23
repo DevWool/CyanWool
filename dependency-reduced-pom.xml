@@ -76,10 +76,6 @@
       <id>sonatype-public</id>
       <url>https://oss.sonatype.org/content/groups/public/</url>
     </repository>
-    <repository>
-      <id>methuselah-repo</id>
-      <url>https://maven.methuselah.ru/</url>
-    </repository>
   </repositories>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

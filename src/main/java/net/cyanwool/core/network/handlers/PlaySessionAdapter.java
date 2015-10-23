@@ -1,7 +1,7 @@
 package net.cyanwool.core.network.handlers;
 
-import org.spacehq.mc.auth.GameProfile;
-import org.spacehq.mc.protocol.ProtocolConstants;
+import org.spacehq.mc.auth.data.GameProfile;
+import org.spacehq.mc.protocol.MinecraftConstants;
 import org.spacehq.mc.protocol.packet.ingame.client.ClientSettingsPacket;
 import org.spacehq.packetlib.event.session.PacketReceivedEvent;
 import org.spacehq.packetlib.event.session.SessionAdapter;
@@ -19,8 +19,8 @@ public class PlaySessionAdapter extends SessionAdapter {
 
 	@Override
 	public void packetReceived(PacketReceivedEvent event) {
-		if (event.getPacket() instanceof ClientSettingsPacket) {
-			GameProfile profile = event.getSession().getFlag(ProtocolConstants.PROFILE_KEY);
+		if (ClientSettingsPacket.class.isAssignableFrom(event.getClass())) {
+			GameProfile profile = event.getSession().getFlag(MinecraftConstants.PROFILE_KEY);
 			Player player = server.getPlayerManager().getPlayer(profile.getName());
 			ClientSettingsPacket packet = event.getPacket();
 			// ClientSettings settings = new ClientSettings(packet);

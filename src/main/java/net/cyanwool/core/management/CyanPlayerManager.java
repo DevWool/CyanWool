@@ -1,15 +1,15 @@
 package net.cyanwool.core.management;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.spacehq.mc.auth.GameProfile;
 import org.spacehq.mc.protocol.data.game.values.PlayerListEntryAction;
 
 import net.cyanwool.api.Server;
 import net.cyanwool.api.entity.alive.player.Player;
+import net.cyanwool.api.entity.alive.player.PlayerProfile;
 import net.cyanwool.api.management.PlayerManager;
-import net.cyanwool.api.network.Packet;
 import net.cyanwool.api.world.World;
 
 public class CyanPlayerManager implements PlayerManager {
@@ -27,8 +27,8 @@ public class CyanPlayerManager implements PlayerManager {
 		return server;
 	}
 
-	// @Override
-	public void joinPlayer(GameProfile info) {
+	@Override
+	public void joinPlayer(PlayerProfile info) {
 		Player player = null;
 
 		try {
@@ -37,28 +37,14 @@ public class CyanPlayerManager implements PlayerManager {
 			e.printStackTrace();
 		}
 		if (player.isOnline()) {
-			spawnPlayer(player);
+			getServer().getEntityManager().registerEntity(player);
 			players.add(player);
 		}
 	}
 
 	@Override
-	public void spawnPlayer(Player player) {
-		if (player.isOnline()) {
-			for (Packet packet : player.getSpawnPackets()) {
-				getServer().getNetworkServer().sendPacketDistance(player.getPosition(), packet, getServer().getServerConfiguration().getRadiusViewDistance());
-			}
-
-			// ServerPlayerListEntryPacket packet = new ServerPlayerListEntryPacket(PlayerListEntryAction.ADD_PLAYER, new PlayerListEntry[] { player.getPlayerListEntry() });
-			// getServer().getNetworkServer().sendPacketForAllExpect(packet, player);
-
-			getServer().getEntityManager().registerEntity(player);
-		}
-	}
-
-	@Override
-	public void leavePlayer(Player player) {
-		player.destroy();
+	public void onLeavePlayer(Player player) {
+		// player.destroy();
 		// ServerPlayerListEntryPacket packet = new ServerPlayerListEntryPacket(PlayerListEntryAction.REMOVE_PLAYER, new PlayerListEntry[] { player.getPlayerListEntry() });
 		// getServer().getNetworkServer().sendPacketForAllExpect(packet, player);
 	}
@@ -87,6 +73,8 @@ public class CyanPlayerManager implements PlayerManager {
 		if (player.isOnline()) {
 			// ServerPlayerListEntryPacket packet = new ServerPlayerListEntryPacket(action, new PlayerListEntry[] { player.getPlayerListEntry() });
 			// getServer().getNetworkServer().sendPacketForAllExpect(packet, player);
+			// player.getTrackerEntry().refresh();
+			// player.getTrackerEntry().
 		}
 	}
 
@@ -94,6 +82,16 @@ public class CyanPlayerManager implements PlayerManager {
 	public Player getPlayer(String name) {
 		for (Player player : getPlayers()) {
 			if (player.getName().equals(name)) {
+				return player;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Player getPlayer(UUID uuid) {
+		for (Player player : getPlayers()) {
+			if (player.getUUID().equals(uuid)) {
 				return player;
 			}
 		}

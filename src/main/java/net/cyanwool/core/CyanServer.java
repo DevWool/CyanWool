@@ -1,10 +1,6 @@
 package net.cyanwool.core;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +10,6 @@ import net.cyanwool.api.command.ConsoleCommandSender;
 import net.cyanwool.api.command.ICommandManager;
 import net.cyanwool.api.command.SimpleCommandManager;
 import net.cyanwool.api.entity.EntityManager;
-import net.cyanwool.api.io.IOManager;
 import net.cyanwool.api.lang.ILanguageManager;
 import net.cyanwool.api.management.OperatorsManager;
 import net.cyanwool.api.management.PlayerManager;
@@ -61,11 +56,9 @@ public class CyanServer implements Server {
 	private Registry registry;
 	private IPluginManager pluginManager;
 	private ICommandManager cmdManager;
-	private IOManager ioManager;
 	private WorldManager worldManager;
 	private EntityManager entityManager;
 	private ILanguageManager langManager;
-	private BufferedImage icon;
 	private ConsoleCommandSender console;
 
 	@Override
@@ -84,11 +77,6 @@ public class CyanServer implements Server {
 		if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
 			getLogger().warn("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar <server_name>.jar\"");
 			return;
-		}
-
-		try {
-			icon = ImageIO.read(new File("server-icon.png"));
-		} catch (Exception ignored) {
 		}
 
 		// init
@@ -193,16 +181,17 @@ public class CyanServer implements Server {
 	public void shutdown(String message) {
 		getLogger().info("Server shutdown: " + message + " !");
 
+		networkServer.shutdown();
+		getLogger().info("NetworkServer is closed!");
+
 		scheduler.shutdown();
 		getLogger().info("Scheduler's shutdown!");
 
 		pluginManager.unloadPlugins();
 		getLogger().info("Plugins unloaded!");
 
-		networkServer.shutdown();
-		getLogger().info("NetworkServer is closed!");
+		worldManager.saveAllWorlds();
 
-		// worlds.saveAllWorlds();
 		System.exit(1);
 		// TODO
 	}
@@ -233,11 +222,6 @@ public class CyanServer implements Server {
 	}
 
 	@Override
-	public IOManager getIOManager() {
-		return ioManager;
-	}
-
-	@Override
 	public WorldManager getWorldManager() {
 		return worldManager;
 	}
@@ -250,11 +234,6 @@ public class CyanServer implements Server {
 	@Override
 	public String getImplementationType() {
 		return MOD_IMPL;
-	}
-
-	@Override
-	public BufferedImage getIcon() {
-		return icon;
 	}
 
 }
