@@ -1,5 +1,5 @@
-![](https://raw.githubusercontent.com/DevWool/CyanWool/experimental/others/Logo_Redesign_5.png)
-# CyanWool - Experimental 
+![](https://raw.githubusercontent.com/DevWool/CyanWool/experimental/others/HEXOGEN_LOGO_REDESIGN_1.png)
+# Hexogen - Experimental 
 
 Recoded version CyanWool. 
 
