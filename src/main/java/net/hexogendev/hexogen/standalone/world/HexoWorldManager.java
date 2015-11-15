@@ -33,6 +33,9 @@ public class HexoWorldManager implements WorldManager {
 		}
 
 		World world = getServer().getStorageManager().readWorld(folderName, name);
+		if (world == null) {
+			getServer().getLogger().error("Can't load world!");
+		}
 		worlds.add(world);
 		world.loadSpawnChunks();
 		return true;
@@ -40,26 +43,31 @@ public class HexoWorldManager implements WorldManager {
 
 	@Override
 	public World getWorld(String name) {
-		// TODO Auto-generated method stub
+		for (World world : getWorlds()) {
+			if (world.getWorldInfo().getName().equals(name)) {
+				return world;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public void removeWorld(World world) {
-		// TODO Auto-generated method stub
-
+		saveWorld(world);
+		world.getChunkManager().unloadAllChunks();
+		worlds.remove(world);
 	}
 
 	@Override
 	public void saveWorld(World world) {
-		// TODO Auto-generated method stub
-
+		getServer().getStorageManager().saveWorld(world);
 	}
 
 	@Override
 	public void saveAllWorlds() {
-		// TODO Auto-generated method stub
-
+		for (World world : getWorlds()) {
+			saveWorld(world);
+		}
 	}
 
 }

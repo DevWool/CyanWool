@@ -42,6 +42,7 @@ import net.hexogendev.hexogen.standalone.management.HexoPlayerManager;
 import net.hexogendev.hexogen.standalone.management.HexoWhitelistManager;
 import net.hexogendev.hexogen.standalone.network.HexoNetworkServer;
 import net.hexogendev.hexogen.standalone.scheduler.HexoScheduler;
+import net.hexogendev.hexogen.standalone.storage.HexoStorageManager;
 import net.hexogendev.hexogen.standalone.utils.HexoRegistry;
 import net.hexogendev.hexogen.standalone.world.HexoWorldManager;
 
@@ -127,6 +128,7 @@ public class HexoServer implements Server {
 			getServerConfiguration().loadFromFile();
 
 			this.scheduler = new HexoScheduler(this);
+			this.storageManager = new HexoStorageManager(this);
 			this.whitelist = new HexoWhitelistManager(this);
 			this.opManager = new HexoOperatorsManager(this);
 			this.playerManager = new HexoPlayerManager(this);
